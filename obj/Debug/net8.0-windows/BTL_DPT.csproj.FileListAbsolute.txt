@@ -60,3 +60,4 @@ C:\Users\Shinn PC\source\repos\BTL_DPT\BTL_DPT\bin\Debug\net8.0-windows\Microsof
 C:\Users\Shinn PC\source\repos\BTL_DPT\BTL_DPT\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
 C:\Users\Shinn PC\source\repos\BTL_DPT\BTL_DPT\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
 C:\Users\Shinn PC\source\repos\BTL_DPT\BTL_DPT\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\Shinn PC\source\repos\BTL_DPT\BTL_DPT\obj\Debug\net8.0-windows\BTL_DPT.sourcelink.json

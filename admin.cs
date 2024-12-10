@@ -46,7 +46,7 @@ namespace BTL_DPT
         {
             // Mở file dialog để chọn file
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Word Documents (*.docx)|*.docx|PDF Files (*.pdf)|*.pdf"; // Chọn .docx và .pdf
+            openFileDialog.Filter = "Word Documents (*.docx)|*.docx"; // Chọn .docx 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = openFileDialog.FileName;
@@ -224,28 +224,6 @@ namespace BTL_DPT
             }
         }
 
-        // Đọc file .pdf từ byte[]
-        private string ReadPdfFile(byte[] fileData)
-        {
-            // Chuyển byte[] thành MemoryStream
-            using (var memoryStream = new MemoryStream(fileData))
-            {
-                var reader = new PdfReader(memoryStream);
-                var pdfDoc = new iText.Kernel.Pdf.PdfDocument(reader);
-                var text = new StringBuilder();
-
-                for (int pageNumber = 1; pageNumber <= pdfDoc.GetNumberOfPages(); pageNumber++)
-                {
-                    var page = pdfDoc.GetPage(pageNumber);
-                    var strategy = new LocationTextExtractionStrategy(); // Thay thế bằng LocationTextExtractionStrategy
-                    var extractedText = PdfTextExtractor.GetTextFromPage(page, strategy);
-                    text.Append(extractedText);
-                }
-
-                return text.ToString();
-            }
-        }
-
         // Sự kiện khi nhấn nút "Xem"
         private void btnXem_Click(object sender, EventArgs e)
         {
@@ -266,18 +244,10 @@ namespace BTL_DPT
                         byte[] fileData = fileBinaryData.Bytes;
 
                         string fileText = string.Empty;
-
-                        // Kiểm tra đuôi file để quyết định cách đọc
-                        if (selectedFileName.EndsWith(".docx"))
-                        {
-                            // Nếu là file docx, sử dụng phương thức ReadDocxFile
-                            fileText = ReadDocxFile(fileData);
-                        }
-                        else if (selectedFileName.EndsWith(".pdf"))
-                        {
-                            // Nếu là file pdf, sử dụng phương thức ReadPdfFile
-                            fileText = ReadPdfFile(fileData);
-                        }
+                        
+                        // Nếu là file docx, sử dụng phương thức ReadDocxFile
+                        fileText = ReadDocxFile(fileData);
+                       
 
                         // Hiển thị nội dung file trong RichTextBox hoặc TextBox
                         txtReportContent.Text = fileText;

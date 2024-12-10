@@ -27,5 +27,10 @@
                 MessageBox.Show("Tên người dùng hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
